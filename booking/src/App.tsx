@@ -1,13 +1,17 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 // import logo from './logo.svg';
 import './App.css';
-import Rooms from './component/Rooms';
+import { store } from './app/store';
+import Rooms from './components/Rooms';
 
 function App() {
   return (
     <div className="App">
-    <Rooms />
-  </div>
+      <Provider store={store()}>
+        <Rooms />
+      </Provider>
+    </div>
   );
 }
 
