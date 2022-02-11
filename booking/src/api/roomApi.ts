@@ -1,6 +1,6 @@
 import client from "../api";
 import { AxiosResponse } from "axios";
-import { Room } from "../domain/Room";
+import { RoomsResponse } from "../responses/RoomsResponse";
 
 // TODO KSO missing mapping
-export const fetchRooms: () => Promise<AxiosResponse<Room[]>> = () => client.get("/Rooms");
+export const fetchRooms: () => Promise<AxiosResponse<RoomsResponse>> = () => client.get("/Rooms");
