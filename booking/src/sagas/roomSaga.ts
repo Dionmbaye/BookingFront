@@ -1,7 +1,6 @@
 import { fetchRooms } from "../api/roomApi";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { AxiosResponse } from "axios";
-import { Room } from "../domain/Room";
 import { RoomsResponse } from "../responses/RoomsResponse";
 
 export function* getRooms() {
