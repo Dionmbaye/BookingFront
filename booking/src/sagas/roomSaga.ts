@@ -10,18 +10,6 @@ export function* getRooms() {
         yield put({
             type: "FETCH_ROOMS_SUCCESS",
             payload: response.data.rooms
-            //  [
-            //     // TODO KSO fake data
-            //     {
-            //         id: 1,
-            //         name: "Test"
-            //     },
-            //     {
-            //         id: 2,
-            //         name: "Test2"
-            //     }
-            // ]
-
         });
     } catch (e) {
         yield put({

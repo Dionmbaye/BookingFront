@@ -14,18 +14,18 @@ type RoomsProps = {
 export const Rooms: React.FC<RoomsProps> = ({
     rooms,
     fetchRooms
-}: RoomsProps) => {
-    useEffect(() => {
-        fetchRooms();
-    }, []);
+    }: RoomsProps) => {
+        useEffect(() => {
+            fetchRooms();
+        }, []);
 
-    if (!rooms) {
-        return <></>;
-    }
-    rooms.sort((a, b) => a.id - b.id);
-    return <div>
-        {rooms.map(r => <li key={r.id} className="roomList">{r.id} - {r.name}</li>)}
-    </div> 
+        if (!rooms) {
+            return <></>;
+        }
+        rooms.sort((a, b) => a.id - b.id);
+        return <div>
+            {rooms.map(r => <li key={r.id} className="roomList">{r.id} - {r.name}</li>)}
+        </div> 
 };
 
 const mapStateToProps = (state: RootState) => ({
