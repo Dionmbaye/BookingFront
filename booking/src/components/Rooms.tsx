@@ -22,9 +22,9 @@ export const Rooms: React.FC<RoomsProps> = ({
     if (!rooms) {
         return <></>;
     }
-
+    rooms.sort((a, b) => a.id - b.id);
     return <div>
-        {rooms.map(r => <div key={r.id} className="room">{r.id} - {r.name}</div>)}
+        {rooms.map(r => <li key={r.id} className="roomList">{r.id} - {r.name}</li>)}
     </div> 
 };
 

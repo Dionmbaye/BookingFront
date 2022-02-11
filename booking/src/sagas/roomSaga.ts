@@ -2,20 +2,26 @@ import { fetchRooms } from "../api/roomApi";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { AxiosResponse } from "axios";
 import { Room } from "../domain/Room";
+import { RoomsResponse } from "../responses/RoomsResponse";
 
 export function* getRooms() {
     try {
-        const response: AxiosResponse<Room[]> = yield call(fetchRooms);
+        const response: AxiosResponse<RoomsResponse> = yield call(fetchRooms);
         yield put({
             type: "FETCH_ROOMS_SUCCESS",
-            payload: [
-                // TODO KSO fake data
-                {
-                    id: 1,
-                    name: "Test"
-                }
-            ]
-            //payload: response.data.rooms
+            payload: response.data.rooms
+            //  [
+            //     // TODO KSO fake data
+            //     {
+            //         id: 1,
+            //         name: "Test"
+            //     },
+            //     {
+            //         id: 2,
+            //         name: "Test2"
+            //     }
+            // ]
+
         });
     } catch (e) {
         yield put({
