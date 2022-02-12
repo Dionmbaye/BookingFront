@@ -1,16 +1,12 @@
-import { runSaga } from 'redux-saga';
+import { runSaga } from "redux-saga";
 import { getRooms } from "../roomSaga";
 import * as api from "../../api/roomApi";
 import { Room } from "../../domain/Room";
-import { AxiosResponse } from "axios";
 
 test("should fetch rooms and dispatch success action", async () => {
     const rooms: Room[] = [{ id: 1, name: "Title" }];
-    const response: AxiosResponse<Room[]> = {
-        data: rooms, status: 200, statusText: "", config: null, headers: "", request: ""
-    };
     const fetchRooms = jest.spyOn(api, "fetchRooms")
-        .mockImplementation(() => Promise.resolve(response));
+        .mockImplementation(() => Promise.resolve(rooms));
     const dispatched = [];
 
     await runSaga({

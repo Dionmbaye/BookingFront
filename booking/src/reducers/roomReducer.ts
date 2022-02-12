@@ -3,16 +3,12 @@ import { RoomAction } from "../actions/roomActions";
 import { Reducer } from "redux";
 import { Room } from "../domain/Room";
 
-export interface Rooms {
-    [id: number]: Room;
-}
-
 export interface RoomState {
-    items: Rooms;
+    rooms: Room[];
 }
 
 const initialState: RoomState = {
-    items: {}
+    rooms: []
 };
 
 export const roomReducer: Reducer<RoomState, RoomAction> = (
@@ -21,10 +17,9 @@ export const roomReducer: Reducer<RoomState, RoomAction> = (
 ) => {
     switch (action.type) {
         case "FETCH_ROOMS_SUCCESS":
-            debugger;
             return {
                 ...state,
-                items: action.payload
+                rooms: action.payload
             };
         default:
             return state;

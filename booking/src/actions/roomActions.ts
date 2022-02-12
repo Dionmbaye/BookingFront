@@ -1,17 +1,17 @@
-import { Rooms } from "../reducers/roomReducer";
+import { Room } from "../domain/Room";
 
-export type FetchRooms = {
+type FetchRooms = {
     type: "FETCH_ROOMS";
-}
+};
 
 type FetchRoomsSuccess = {
     type: "FETCH_ROOMS_SUCCESS";
-    payload: Rooms;
-}
+    payload: Room[];
+};
 
 type FetchRoomsFail = {
     type: "FETCH_ROOMS_FAIL";
-}
+};
 
 export const fetchRooms = (): FetchRooms => ({
     type: "FETCH_ROOMS"

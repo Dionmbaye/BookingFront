@@ -1,14 +1,13 @@
 import { fetchRooms } from "../api/roomApi";
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { AxiosResponse } from "axios";
-import { RoomsResponse } from "../responses/RoomsResponse";
+import { Room } from "../domain/Room";
 
 export function* getRooms() {
     try {
-        const response: AxiosResponse<RoomsResponse> = yield call(fetchRooms);
+        const rooms: Room[] = yield call(fetchRooms);
         yield put({
             type: "FETCH_ROOMS_SUCCESS",
-            payload: response.data.rooms
+            payload: rooms
         });
     } catch (e) {
         yield put({
