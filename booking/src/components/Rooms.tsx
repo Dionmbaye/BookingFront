@@ -1,7 +1,6 @@
 import _ from "lodash";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./Rooms.css";
 import { RootState } from "../app/store";
 
  const Rooms: React.FC = () => {
@@ -20,7 +19,8 @@ import { RootState } from "../app/store";
     rooms.sort((a, b) => a.id - b.id);
     
     return <div>
-        {rooms.map(r => <li key={r.id} className="roomList">{r.id} - {r.name}</li>)}
+        <h1>Rooms</h1>
+        {rooms.map((r, index) => <li key={r.id} className="liList">{++index} - {r.name}</li>)}
     </div>
 };
 
