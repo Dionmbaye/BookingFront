@@ -8,7 +8,6 @@ import { RoomAction } from "../actions/roomActions";
 import { UserAction } from "../actions/userActions";
 import { BookingAction } from "../actions/bookingActions";
 import { initSagas } from "../sagas/rootSaga"
-import BookingsState from "../states/BookingState";
 
 export interface RootState {
     readonly room: RoomState;
@@ -22,7 +21,7 @@ const rootReducer = combineReducers<RootState>({
     booking: bookingReducer
 });
 
-export type RootActions = RoomAction |UserAction|BookingAction;
+export type RootActions = RoomAction | UserAction | BookingAction;
 
 const sagaMiddleware = createSagaMiddleware();
 

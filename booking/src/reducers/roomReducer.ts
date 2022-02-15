@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { RoomAction } from "../actions/roomActions";
 import { Reducer } from "redux";
 import { Room } from "../domain/Room";

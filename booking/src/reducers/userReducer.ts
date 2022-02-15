@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { UserAction } from "../actions/userActions";
 import { Reducer } from "redux";
 import { User } from "../domain/User";

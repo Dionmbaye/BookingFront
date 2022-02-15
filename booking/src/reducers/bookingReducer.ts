@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { BookingAction } from "../actions/bookingActions";
 import { Reducer } from "redux";
 import { Booking } from "../domain/Booking";
