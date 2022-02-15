@@ -3,12 +3,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/store";
 
- const Rooms: React.FC = () => {
-     const dispatch = useDispatch();
+const Rooms: React.FC = () => {
+    const dispatch = useDispatch();
      
-     useEffect(() => {
-         dispatch({ type: "FETCH_ROOMS" });
-     }, []);
+    useEffect(() => {
+        dispatch({ type: "FETCH_ROOMS" });
+    }, []);
 
     const rooms = useSelector((state: RootState) => state.room.rooms);
 

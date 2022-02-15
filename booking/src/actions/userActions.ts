@@ -17,4 +17,7 @@ export const fetchUsers = (): FetchUsers => ({
     type: "FETCH_USERS"
 });
 
-export type UserAction =FetchUsers| FetchUsersSuccess| FetchUsersFail;
+export type UserAction =
+    FetchUsers
+    | FetchUsersSuccess
+    | FetchUsersFail;

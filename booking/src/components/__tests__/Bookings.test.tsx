@@ -11,9 +11,21 @@ let useDispatchSpy;
 
 beforeEach(() => {
     const useSelectorSpy = jest.spyOn(redux, "useSelector");
-    useSelectorSpy.mockReturnValue([{ id: 1, startSlot: 5, endSlot:10, date:new Date('2022-02-15T15:00:00'), 
-    user: {id: 1, firstName:"test 1", lastName:"test2"},
-    room: {id:1, name:"test room"} }]);
+    useSelectorSpy.mockReturnValue([{
+        id: 1,
+        startSlot: 5,
+        endSlot:10,
+        date: new Date('2022-02-15T15:00:00'), 
+        user: {
+            id: 1,
+            firstName:"test 1",
+            lastName:"test2"
+        },
+        room: {
+            id: 1,
+            name: "test room"
+        }
+    }]);
     
     useDispatchSpy = jest
         .spyOn(redux, "useDispatch")

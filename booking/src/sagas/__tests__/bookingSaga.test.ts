@@ -6,10 +6,10 @@ import { Booking } from "../../domain/Booking";
 test("should fetch bookings and dispatch success action", async () => {
     const bookings: Booking[] = [{ id: 1, 
         date: new Date('2022-02-15T15:00:00'), 
-        startSlot:5, 
-        endSlot:10, 
-        user: {id: 1, firstName:"test 1", lastName:"test2"},
-        room: {id:1, name:"test room"}
+        startSlot: 5, 
+        endSlot: 10, 
+        user: {id: 1, firstName: "test 1", lastName: "test2"},
+        room: {id: 1, name: "test room"}
     }];
     const fetchBookings = jest.spyOn(api, "fetchBookings")
         .mockImplementation(() => Promise.resolve(bookings));

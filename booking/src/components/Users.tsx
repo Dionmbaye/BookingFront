@@ -10,18 +10,18 @@ const Users: React.FC = () => {
         dispatch({ type: "FETCH_USERS" });
     }, []);
 
-   const users = useSelector((state: RootState) => state.user.users);
+    const users = useSelector((state: RootState) => state.user.users);
 
-   if (!users) {
-       return <></>;
-   }
+    if (!users) {
+        return <></>;
+    }
 
-   users.sort((a, b) => a.id - b.id);
-   
-   return <div>
-       <h1>Users</h1>
-       {users.map((u, index) => <li key={u.id} className="liList">{++index} - {u.firstName} {u.lastName}</li>)}
-   </div>
+    users.sort((a, b) => a.id - b.id);
+
+    return <div>
+        <h1>Users</h1>
+        {users.map((u, index) => <li key={u.id} className="liList">{++index} - {u.firstName} {u.lastName}</li>)}
+    </div>
 }
 
 export default Users;
