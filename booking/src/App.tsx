@@ -1,6 +1,5 @@
 import React from "react";
 import { Provider } from "react-redux";
-// import logo from "./logo.svg";
 import "./App.css";
 import { store } from "./app/store";
 import Bookings from "./components/Bookings";
@@ -12,8 +11,8 @@ function App() {
     <div className="App">
       <Provider store={store()}>
         <Rooms />
-        <Users/>
-        <Bookings/>
+        <Users />
+        <Bookings />
       </Provider>
     </div>
   );

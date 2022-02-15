@@ -21,6 +21,6 @@ const Users: React.FC = () => {
         <h1>Users</h1>
         {users.map((u, index) => <li key={u.id} className="liList">{++index} - {u.firstName} {u.lastName}</li>)}
     </div>
-}
+};
 
 export default Users;

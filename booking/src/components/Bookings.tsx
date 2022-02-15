@@ -21,6 +21,6 @@ const Bookings: React.FC = () => {
        <h1>Bookings</h1>
        {bookings.map((b, index) => <li key={b.id} className="liList">{++index} - User: {b.user.firstName} {b.user.lastName} Room: {b.room.name} StartSlot: {b.startSlot} EnndSlot: {b.endSlot}</li>)}
    </div>
-}
+};
 
 export default Bookings;
