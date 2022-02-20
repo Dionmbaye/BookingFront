@@ -1,4 +1,4 @@
-import { fetchRooms } from "../api/roomApi";
+import { fetchRooms, postRoom } from "../api/roomApi";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { Room } from "../domain/Room";
 
@@ -18,6 +18,20 @@ export function* getRooms() {
 
 export default function* () {
     yield all([
-        takeLatest("FETCH_ROOMS", getRooms)
+        takeLatest("FETCH_ROOMS", getRooms), takeLatest("CREATE_ROOM", createRoom)
     ]);
+}
+
+
+export function* createRoom(room:any): any {
+    try {
+        yield call(postRoom(room));
+        yield put({
+            type: "CREATE_ROOM_SUCCESS"
+        });
+    } catch (e) {
+        yield put({
+            type: "CREATE_ROOM_FAIL"
+        });
+    }
 }

@@ -17,7 +17,14 @@ export const fetchRooms = (): FetchRooms => ({
     type: "FETCH_ROOMS"
 });
 
+type PostRoom = {
+    type: "CREATE_ROOM";
+};
+
+export const postRoom = (room: Room): PostRoom => ({
+    type: "CREATE_ROOM"
+});
 export type RoomAction =
     FetchRooms
     | FetchRoomsSuccess
-    | FetchRoomsFail;
+    | FetchRoomsFail|PostRoom;

@@ -19,7 +19,7 @@ const Bookings: React.FC = () => {
    
    return <div>
        <h1>Bookings</h1>
-       {bookings.map((b, index) => <li key={b.id} className="liList">{++index} - User: {b.user.firstName} {b.user.lastName} Room: {b.room.name} StartSlot: {b.startSlot} EnndSlot: {b.endSlot}</li>)}
+       {bookings.map((b, index) => <li key={b.id} className="liList">{++index} - User: {b.user.firstName} {b.user.lastName} Room: {b.room.name} StartSlot: {b.startSlot} EndSlot: {b.endSlot}</li>)}
    </div>
 };
 

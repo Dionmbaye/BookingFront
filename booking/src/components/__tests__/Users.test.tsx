@@ -18,7 +18,7 @@ beforeEach(() => {
         .mockImplementation(() => configureStore()().dispatch);
 });
 
-test("should render self", () => {
+test("should render self Users", () => {
     const wrapper = mount(<Users />);
 
     expect(wrapper.find("li.liList").hasClass("liList")).toBe(true);

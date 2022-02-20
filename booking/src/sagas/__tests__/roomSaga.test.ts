@@ -40,3 +40,4 @@ test("should fetch rooms and dispatch fail action", async () => {
     expect(dispatched).toEqual([failAction]);
     fetchRooms.mockClear();
 });
+

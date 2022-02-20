@@ -4,10 +4,12 @@ import { Room } from "../domain/Room";
 
 export interface RoomState {
     rooms: Room[];
+    room: Room;
 }
 
 const initialState: RoomState = {
-    rooms: []
+    rooms: [],
+    room: {id:0, name:""}
 };
 
 export const roomReducer: Reducer<RoomState, RoomAction> = (
