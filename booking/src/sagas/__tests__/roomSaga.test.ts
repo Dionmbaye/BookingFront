@@ -42,19 +42,7 @@ test("should fetch rooms and dispatch fail action", async () => {
     fetchRooms.mockClear();
 });
 
-// test("should create room and dispatch success action", async () => {
-//     let room={name:"test", id:0};
-//     const createRoom = jest.spyOn(api, "postRoom")
-//         .mockImplementation(() => Promise.resolve(room));
-//     const dispatched = [];
 
-//     const failAction = {
-//         type: "CREATE_ROOM_FAIL"
-//     };
-
-//     expect(dispatched).toEqual([failAction]);
-//     createRoom.mockClear();
-// });
 
 
 
