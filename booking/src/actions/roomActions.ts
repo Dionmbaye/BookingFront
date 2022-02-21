@@ -16,15 +16,22 @@ type FetchRoomsFail = {
 export const fetchRooms = (): FetchRooms => ({
     type: "FETCH_ROOMS"
 });
+type CreateRoomSuccess = {
+    type: "CREATE_ROOM_SUCCESS";
+    payload: Room;
+};
 
-type PostRoom = {
+type CreateRoomFail = {
+    type: "CREATE_ROOM_FAIL";
+};
+type CreateRoom = {
     type: "CREATE_ROOM";
 };
 
-export const postRoom = (room: Room): PostRoom => ({
+export const postRoom = (room: Room): CreateRoom => ({
     type: "CREATE_ROOM"
 });
 export type RoomAction =
     FetchRooms
     | FetchRoomsSuccess
-    | FetchRoomsFail|PostRoom;
+    | FetchRoomsFail|CreateRoom|CreateRoomSuccess|CreateRoomFail;

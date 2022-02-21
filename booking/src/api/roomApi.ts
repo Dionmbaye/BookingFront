@@ -13,5 +13,5 @@ export const fetchRooms = async (): Promise<Room[]> => {
 
 export const postRoom = (room: any)=>async (): Promise<Room> =>{
     const response = await client.post("/Rooms", {name:room.room.name, id:0});
-    return room.room.room;
+    return room.room;
 };

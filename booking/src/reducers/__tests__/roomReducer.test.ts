@@ -3,7 +3,8 @@ import { roomReducer } from "../roomReducer";
 test("should handle FETCH_ROOMS", () => {
     expect(
         roomReducer({
-            rooms: []
+            rooms: [],
+            room:{name:"", id:0}
         }, {
             type: "FETCH_ROOMS"
         })
@@ -15,7 +16,8 @@ test("should handle FETCH_ROOMS", () => {
 test("should handle FETCH_ROOMS_SUCCESS", () => {
     expect(
         roomReducer({
-            rooms: []
+            rooms: [],
+            room:{name:"", id:0}
         }, {
             type: "FETCH_ROOMS_SUCCESS",
             payload: [{ id: 1, name: "Title" }]
@@ -28,7 +30,8 @@ test("should handle FETCH_ROOMS_SUCCESS", () => {
 test("should handle FETCH_ROOMS_FAIL", () => {
     expect(
         roomReducer({
-            rooms: []
+            rooms: [],
+            room:{name:"", id:0}
         }, {
             type: "FETCH_ROOMS_FAIL"
         })

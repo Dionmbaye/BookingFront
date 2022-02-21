@@ -4,6 +4,7 @@ import Enzyme, { mount } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import configureStore from "redux-mock-store";
 import Users from "../Users";
+import CreateUser from "../CreateUser";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -26,6 +27,12 @@ test("should render self Users", () => {
 
 test("should call fetchUsers", () => {
     mount(<Users />);
+
+    expect(useDispatchSpy).toHaveBeenCalled();
+});
+
+test("should call createUser", () => {
+    mount(<CreateUser />);
 
     expect(useDispatchSpy).toHaveBeenCalled();
 });

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Form, Input } from 'semantic-ui-react'
-import { RootState } from "../app/store";
 
 const CreateRoom: React.FC = () => {
     const initialRoomState = {
@@ -12,7 +10,7 @@ const CreateRoom: React.FC = () => {
         const [submitted, setSubmitted] = useState(false);
         const dispatch = useDispatch();
         
-        const PostRoom=()=>{
+        const CreateRoom=()=>{
                 dispatch({room: {name:room.name, id:null}, type: "CREATE_ROOM"});
                 setSubmitted(true);
                 room.name="";
@@ -36,7 +34,7 @@ const CreateRoom: React.FC = () => {
                 onChange={handleInputChange}
                 name="name"/>
             </div>   
-            <button onClick={PostRoom}>
+            <button onClick={CreateRoom}>
             Submit
         </button>
     </div>

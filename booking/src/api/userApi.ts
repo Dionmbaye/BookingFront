@@ -9,3 +9,8 @@ export const fetchUsers = async (): Promise<User[]> => {
         lastName: u.lastName
     }));
 };
+
+export const postUser = (user: any)=>async (): Promise<User> =>{
+    const response = await client.post("/Users", {firstName:user.user.firstName, id:0, lastName:user.user.lastName});
+    return user.user;
+};
