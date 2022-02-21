@@ -5,6 +5,7 @@ import { store } from "./app/store";
 import Bookings from "./components/Bookings";
 import CreateRoom from "./components/CreateRoom";
 import CreateUser from "./components/CreateUser";
+import BookRoom from "./components/BookRoom";
 import Rooms from "./components/Rooms";
 import Users from "./components/Users";
 
@@ -17,7 +18,8 @@ function App() {
         <CreateRoom/> */}
         <Users />
         <CreateUser/>
-        {/* <Bookings /> */}
+        <BookRoom/>
+        <Bookings />
       </Provider>
     </div>
   );

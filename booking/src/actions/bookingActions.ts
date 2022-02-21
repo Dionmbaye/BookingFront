@@ -17,4 +17,21 @@ export const fetchBookings = (): FetchBookings => ({
     type: "FETCH_BOOKINGS"
 });
 
-export type BookingAction =FetchBookings| FetchBookingsSuccess| FetchBookingsFail;
+
+type BookRoom = {
+    type: "BOOK_ROOM";
+};
+type BookRoomSuccess = {
+    type: "BOOK_ROOM_SUCCESS";
+};
+
+type BookRoomFail = {
+    type: "BOOK_ROOM_FAIL";
+};
+
+export const bookRoom = (booking: Booking): BookRoom => ({
+    type: "BOOK_ROOM"
+});
+
+
+export type BookingAction =FetchBookings| FetchBookingsSuccess| FetchBookingsFail|BookRoom|BookRoomSuccess|BookRoomFail;
