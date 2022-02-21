@@ -16,13 +16,6 @@ export function* getRooms() {
     }
 }
 
-export default function* () {
-    yield all([
-        takeLatest("FETCH_ROOMS", getRooms), takeLatest("CREATE_ROOM", createRoom)
-    ]);
-}
-
-
 export function* createRoom(room:any): any {
     try {
         yield call(postRoom(room));
@@ -35,3 +28,11 @@ export function* createRoom(room:any): any {
         });
     }
 }
+
+
+export default function* () {
+    yield all([
+        takeLatest("FETCH_ROOMS", getRooms), takeLatest("CREATE_ROOM", createRoom)
+    ]);
+}
+

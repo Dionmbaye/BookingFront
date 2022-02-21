@@ -1,5 +1,6 @@
 import { runSaga } from "redux-saga";
 import { getRooms } from "../roomSaga";
+import { createRoom } from "../roomSaga";
 import * as api from "../../api/roomApi";
 import { Room } from "../../domain/Room";
 
@@ -40,4 +41,20 @@ test("should fetch rooms and dispatch fail action", async () => {
     expect(dispatched).toEqual([failAction]);
     fetchRooms.mockClear();
 });
+
+// test("should create room and dispatch success action", async () => {
+//     let room={name:"test", id:0};
+//     const createRoom = jest.spyOn(api, "postRoom")
+//         .mockImplementation(() => Promise.resolve(room));
+//     const dispatched = [];
+
+//     const failAction = {
+//         type: "CREATE_ROOM_FAIL"
+//     };
+
+//     expect(dispatched).toEqual([failAction]);
+//     createRoom.mockClear();
+// });
+
+
 

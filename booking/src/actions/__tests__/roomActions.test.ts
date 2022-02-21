@@ -16,3 +16,9 @@ test("should create an action to post a room", () => {
 
     expect(postRoom({name:"", id:0})).toEqual(expectedAction)
 });
+
+
+  
+
+
+

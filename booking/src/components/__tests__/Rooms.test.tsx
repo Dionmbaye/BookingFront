@@ -4,6 +4,7 @@ import Enzyme, { mount } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import configureStore from "redux-mock-store";
 import Rooms from "../Rooms";
+import CreateRoom from "../CreateRoom";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -26,6 +27,12 @@ test("should render self Rooms", () => {
 
 test("should call fetchRooms", () => {
     mount(<Rooms />);
+
+    expect(useDispatchSpy).toHaveBeenCalled();
+});
+
+test("should call createRoom", () => {
+    mount(<CreateRoom />);
 
     expect(useDispatchSpy).toHaveBeenCalled();
 });
