@@ -13,12 +13,12 @@ import Users from "./components/Users";
 function App() {
   return (
     <div className="App">
-      <Provider store={store()}>
+      <Provider store={store}>
         {/* <Rooms />
         <CreateRoom/> */}
         <Users />
-        <CreateUser/>
-        <BookRoom/>
+        <CreateUser />
+        <BookRoom />
         <Bookings />
       </Provider>
     </div>
