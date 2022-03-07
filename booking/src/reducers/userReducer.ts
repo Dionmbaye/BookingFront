@@ -1,15 +1,14 @@
 import { UserAction } from "../actions/userActions";
 import { Reducer } from "redux";
-import { User } from "../domain/User";
-
-export interface UserState {
-    users: User[];
-    user: User;
-}
+import UserState from "../states/UserState";
 
 const initialState: UserState = {
     users: [],
-    user: {id:0, firstName:"", lastName:""}
+    user: {
+        id: 0,
+        firstName: "",
+        lastName:""
+    }
 };
 
 export const userReducer: Reducer<UserState, UserAction> = (

@@ -4,12 +4,17 @@ test("should handle FETCH_ROOMS", () => {
     expect(
         roomReducer({
             rooms: [],
-            room:{name:"", id:0}
+            room: undefined,
+            isOpen: false,
+            isLoading: false
         }, {
             type: "FETCH_ROOMS"
         })
     ).toEqual({
-        rooms: []
+        rooms: [],
+        room: undefined,
+        isOpen: false,
+        isLoading: false
     });
 });
 
@@ -17,13 +22,18 @@ test("should handle FETCH_ROOMS_SUCCESS", () => {
     expect(
         roomReducer({
             rooms: [],
-            room:{name:"", id:0}
+            room: undefined,
+            isOpen: false,
+            isLoading: false
         }, {
             type: "FETCH_ROOMS_SUCCESS",
             payload: [{ id: 1, name: "Title" }]
         })
     ).toEqual({
-        rooms: [{ id: 1, name: "Title" }]
+        rooms: [{ id: 1, name: "Title" }],
+        room: undefined,
+        isOpen: false,
+        isLoading: false
     });
 });
 
@@ -31,11 +41,16 @@ test("should handle FETCH_ROOMS_FAIL", () => {
     expect(
         roomReducer({
             rooms: [],
-            room:{name:"", id:0}
+            room: undefined,
+            isOpen: false,
+            isLoading: false
         }, {
             type: "FETCH_ROOMS_FAIL"
         })
     ).toEqual({
-        rooms: []
+        rooms: [],
+        room: undefined,
+        isOpen: false,
+        isLoading: false
     });
 });

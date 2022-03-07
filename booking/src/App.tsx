@@ -3,19 +3,16 @@ import { Provider } from "react-redux";
 import "./App.css";
 import { store } from "./app/store";
 import Bookings from "./components/Bookings";
-import CreateRoom from "./components/CreateRoom";
 import CreateUser from "./components/CreateUser";
 import BookRoom from "./components/BookRoom";
-import Rooms from "./components/Rooms";
 import Users from "./components/Users";
-
+import Room from "./components/room/Room";
 
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        {/* <Rooms />
-        <CreateRoom/> */}
+        <Room />
         <Users />
         <CreateUser />
         <BookRoom />
