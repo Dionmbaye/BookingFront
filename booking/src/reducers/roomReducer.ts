@@ -22,7 +22,7 @@ export const roomReducer: Reducer<RoomState, RoomAction> = (
         case "FETCH_ROOM":
             return {
                 ...state,
-                currentRoom: {
+                room: {
                     id: action.payload,
                     name: ""
                 },
@@ -31,21 +31,21 @@ export const roomReducer: Reducer<RoomState, RoomAction> = (
         case "FETCH_ROOM_SUCCESS":
             return {
                 ...state,
-                currentRoom: action.payload,
+                room: action.payload,
                 isOpen: true,
                 isLoading: false
             };
         case "OPEN_ROOM_EDITOR":
             return {
                 ...state,
-                currentRoom: undefined,
+                room: undefined,
                 isOpen: true
             };
         case "CREATE_ROOM":
         case "UPDATE_ROOM":
             return {
                 ...state,
-                currentRoom: action.payload,
+                room: action.payload,
                 isLoading: true
             };
         case "CREATE_ROOM_SUCCESS":
