@@ -46,7 +46,7 @@ export function* createRoom(action: CreateRoom): any {
 
 export function* updateRoom(action: UpdateRoom) {
     try {
-        yield call(putRoom, action.payload);
+        yield putRoom(action.payload); //call(putRoom, action.payload);
         yield put({
             type: "UPDATE_ROOM_SUCCESS"
         });

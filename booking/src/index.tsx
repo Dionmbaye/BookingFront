@@ -6,9 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import "react-datepicker/dist/react-datepicker.css";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+    <App />,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
