@@ -17,12 +17,12 @@ export const getRoom = async (id: number): Promise<Room> => {
     };
 };
 
-export const postRoom = (room: Room)=>async (): Promise<Room> =>{
+export const postRoom = async (room: Room): Promise<Room> => {
     const response = await client.post("/Rooms", { name: room.name, id: 0 });
     return room;
 };
 
-export const putRoom = (room: Room)=>async (): Promise<Room> =>{
+export const putRoom = async (room: Room): Promise<Room> => {
     const response = await client.put(`/Rooms/${room.id}`, { name: room.name, id: room.id });
     return room;
 };

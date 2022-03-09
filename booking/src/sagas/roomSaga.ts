@@ -33,7 +33,7 @@ export function* fetchRoom(action: FetchRoom) {
 
 export function* createRoom(action: CreateRoom): any {
     try {
-        yield call(postRoom(action.payload));
+        yield call(postRoom, action.payload);
         yield put({
             type: "CREATE_ROOM_SUCCESS"
         });
