@@ -4,21 +4,9 @@ import BookingState from "../states/BookingState";
 
 const initialState: BookingState = {
     bookings: [],
-    booking: {
-        id: 0,
-        date: new Date(),
-        startSlot: 0,
-        endSlot: 0,
-        room: {
-            name: "",
-            id: 0
-        },
-        user : {
-            id: 0,
-            firstName: "",
-            lastName: ""
-        }
-    }
+    booking: undefined,
+    isOpen: false,
+    isLoading: false
 };
 
 export const bookingReducer: Reducer<BookingState, BookingAction> = (
@@ -30,6 +18,51 @@ export const bookingReducer: Reducer<BookingState, BookingAction> = (
             return {
                 ...state,
                 bookings: action.payload
+            };
+            case "FETCH_BOOKING":
+            return {
+                ...state,
+                booking: {
+                    id: action.payload,
+                    date: new Date(),
+                    startSlot: 0,
+                    endSlot: 0,
+                    user: {id:0, firstName:"", lastName:""},
+                    room: {id:0, name:""}
+                },
+                isLoading: true
+            };
+        case "FETCH_BOOKING_SUCCESS":
+            return {
+                ...state,
+                booking: action.payload,
+                isOpen: true,
+                isLoading: false
+            };
+        case "OPEN_BOOKING_EDITOR":
+            return {
+                ...state,
+                booking: {
+                    id: 0,
+                    date: new Date(),
+                    startSlot: 0,
+                    endSlot: 0,
+                    user: {id:0, firstName:"", lastName:""},
+                    room: {id:0, name:""}
+                },
+                isOpen: true
+            };
+        case "CREATE_BOOKING":
+            return {
+                ...state,
+                booking: action.payload,
+                isLoading: true
+            };
+        case "CREATE_BOOKING_SUCCESS":
+            return {
+                ...state,
+                isOpen: false,
+                isLoading: false
             };
         default:
             return state;

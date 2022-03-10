@@ -1,9 +1,5 @@
 import { User } from "../domain/User";
 
-
-type OpenUserEditor = {
-    type: "OPEN_USER_EDITOR";
-};
 export type FetchUsers = {
     type: "FETCH_USERS";
 };
@@ -17,6 +13,9 @@ type FetchUsersFail = {
     type: "FETCH_USERS_FAIL";
 };
 
+type OpenUserEditor = {
+    type: "OPEN_USER_EDITOR";
+};
 export type CreateUser = {
     type: "CREATE_USER";
     payload: User;

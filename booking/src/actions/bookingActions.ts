@@ -13,21 +13,47 @@ type FetchBookingsFail = {
     type: "FETCH_BOOKINGS_FAIL";
 };
 
-type BookRoom = {
-    type: "BOOK_ROOM";
+
+type OpenBookingEditor = {
+    type: "OPEN_BOOKING_EDITOR";
 };
-type BookRoomSuccess = {
-    type: "BOOK_ROOM_SUCCESS";
+export type CreateBooking = {
+    type: "CREATE_BOOKING";
+    payload: Booking;
+};
+type CreateBookingSuccess = {
+    type: "CREATE_BOOKING_SUCCESS";
+    payload: Booking;
 };
 
-type BookRoomFail = {
-    type: "BOOK_ROOM_FAIL";
+type CreateBookingFail = {
+    type: "CREATE_BOOKING_FAIL";
 };
+
+export type FetchBooking = {
+    type: "FETCH_BOOKING";
+    payload: number;
+};
+
+type FetchBookingSuccess = {
+    type: "FETCH_BOOKING_SUCCESS";
+    payload: Booking;
+};
+
+type FetchBookingFail = {
+    type: "FETCH_BOOKING_FAIL";
+};
+
+
 
 export type BookingAction =
     FetchBookings
     | FetchBookingsSuccess
     | FetchBookingsFail
-    | BookRoom
-    | BookRoomSuccess
-    | BookRoomFail;
+    | CreateBooking
+    | CreateBookingSuccess
+    | CreateBookingFail
+    | OpenBookingEditor
+    | FetchBooking
+    | FetchBookingFail
+    | FetchBookingSuccess;

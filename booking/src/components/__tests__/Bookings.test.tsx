@@ -3,7 +3,7 @@ import * as redux from "react-redux"
 import Enzyme, { mount } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import configureStore from "redux-mock-store";
-import Bookings from "../Bookings";
+import Bookings from "../booking/Bookings";
 
 Enzyme.configure({ adapter: new Adapter() });
 

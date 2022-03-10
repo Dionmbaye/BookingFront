@@ -5,6 +5,7 @@ import { Room } from "../../domain/Room";
 import MaterialTable from '@material-table/core';
 import Button from "@material-ui/core/Button";
 import { Edit } from "@material-ui/icons";
+import EditIcon from "@material-ui/icons/Edit";
 
 const Rooms: React.FC = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Rooms: React.FC = () => {
         { title: "Name", field: "name" },
         { title: 'Actions', render: (rowData: Room) => 
             <div>
-                <Button onClick={() => dispatch({ type: "FETCH_ROOM", payload: rowData.id })}>Edit</Button>
+                <Button onClick={() => dispatch({ type: "FETCH_ROOM", payload: rowData.id })}><EditIcon />Edit</Button>
             </div>
         }
       ];

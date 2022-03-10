@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { User } from "../../domain/User";
+import EditIcon from "@material-ui/icons/Edit";
 
 const Users: React.FC = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Users: React.FC = () => {
         { title: "Last Name", field: "lastName" },
         { title: 'Actions', render: (rowData: User) => 
             <div>
-                <Button onClick={() => dispatch({ type: "FETCH_USER", payload: rowData.id })}>Edit</Button>
+                <Button onClick={() => dispatch({ type: "FETCH_USER", payload: rowData.id })}><EditIcon />Edit</Button>
             </div>
         }
       ];
