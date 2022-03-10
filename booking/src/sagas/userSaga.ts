@@ -1,6 +1,7 @@
-import { fetchUsers, postUser } from "../api/userApi";
+import { fetchUsers, getUser, postUser, putUser } from "../api/userApi";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { User } from "../domain/User";
+import { UpdateUser, CreateUser, FetchUser} from "../actions/userActions";
 
 export function* getUsers() {
     try {
@@ -16,12 +17,11 @@ export function* getUsers() {
     }
 }
 
-export function* createUser(user:any): any {
+export function* createUser(action: CreateUser): any {
     try {
-        const userResponse =yield call(postUser(user));
+        yield call(postUser, action.payload);
         yield put({
-            type: "CREATE_USER_SUCCESS",
-            payload: userResponse
+            type: "CREATE_USER_SUCCESS"
         });
     } catch (e) {
         yield put({
@@ -30,8 +30,38 @@ export function* createUser(user:any): any {
     }
 }
 
+export function* updateUser(action: UpdateUser) {
+    try {
+        yield putUser(action.payload); 
+        yield put({
+            type: "UPDATE_USER_SUCCESS"
+        });
+    } catch (e) {
+        yield put({
+            type: "UPDATE_USER_FAIL"
+        });
+    }
+}
+
+export function* fetchUser(action: FetchUser) {
+    try {
+            const user: User = yield call(getUser, action.payload);
+            yield put({
+                type: "FETCH_USER_SUCCESS",
+                payload: user
+        });
+    } catch (e) {
+        yield put({
+            type: "FETCH_USER_FAIL"
+        });
+    }
+}
+
 export default function* () {
     yield all([
-        takeLatest("FETCH_USERS", getUsers), takeLatest("CREATE_USER", createUser)
+        takeLatest("FETCH_USERS", getUsers), 
+        takeLatest("CREATE_USER", createUser),
+        takeLatest("FETCH_USER", fetchUser),
+        takeLatest("UPDATE_USER", updateUser)
     ]);
 }

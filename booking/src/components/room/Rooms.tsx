@@ -33,7 +33,6 @@ const Rooms: React.FC = () => {
         height: "100px",
         width: "800px",
         margin: "5px auto",
-        // border: "solid 1px"
     };
 
     return <div style={roomStyle}>
@@ -43,11 +42,6 @@ const Rooms: React.FC = () => {
         </Button>
         <br/>
         <MaterialTable title="Rooms" columns={columns} data={rooms} />
-        {/* {rooms.map((r: Room) =>
-            <li key={r.id} className="liList">
-                <button onClick={() => dispatch({ type: "FETCH_ROOM", payload: r.id })}>{r.id}</button> - {r.name}
-            </li>)
-        } */}
         
     </div>
 };

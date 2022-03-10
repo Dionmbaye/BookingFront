@@ -22,8 +22,10 @@ const RoomEditor: React.FC = () => {
     const saveRoom = () => {
         if (id === 0) {
             dispatch({ type: "CREATE_ROOM", payload: { name } });
+            window.location.reload();
         } else {
             dispatch({ type: "UPDATE_ROOM", payload: { id, name } });
+            window.location.reload();
         }
     };
 
@@ -63,15 +65,6 @@ const RoomEditor: React.FC = () => {
                 </Fade>
             </Modal>
     </div>
-
-    // return <div style={roomStyle}>
-    //     <div>
-    //         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-    //     </div>
-    //     <div>
-    //         <button onClick={saveRoom}>Save</button>
-    //     </div>
-    // </div>;
 };
 
 export default RoomEditor;

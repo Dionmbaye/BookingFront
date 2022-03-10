@@ -1,6 +1,10 @@
 import { User } from "../domain/User";
 
-type FetchUsers = {
+
+type OpenUserEditor = {
+    type: "OPEN_USER_EDITOR";
+};
+export type FetchUsers = {
     type: "FETCH_USERS";
 };
 
@@ -13,8 +17,9 @@ type FetchUsersFail = {
     type: "FETCH_USERS_FAIL";
 };
 
-type CreateUser = {
+export type CreateUser = {
     type: "CREATE_USER";
+    payload: User;
 };
 type CreateUserSuccess = {
     type: "CREATE_USER_SUCCESS";
@@ -25,9 +30,33 @@ type CreateUserFail = {
     type: "CREATE_USER_FAIL";
 };
 
-export const postUser = (user: User): CreateUser => ({
-    type: "CREATE_USER"
-});
+export type UpdateUser = {
+    type: "UPDATE_USER";
+    payload: User;
+};
+
+type UpdateUserSuccess = {
+    type: "UPDATE_USER_SUCCESS";
+};
+
+type UpdateUserFail = {
+    type: "UPDATE_USER_FAIL";
+};
+
+export type FetchUser = {
+    type: "FETCH_USER";
+    payload: number;
+};
+
+type FetchUserSuccess = {
+    type: "FETCH_USER_SUCCESS";
+    payload: User;
+};
+
+type FetchUserFail = {
+    type: "FETCH_USER_FAIL";
+};
+
 
 
 export type UserAction =
@@ -36,4 +65,11 @@ export type UserAction =
     | FetchUsersFail
     | CreateUser
     | CreateUserSuccess
-    | CreateUserFail;
+    | CreateUserFail
+    | OpenUserEditor
+    | UpdateUser
+    | UpdateUserFail
+    | UpdateUserSuccess
+    | FetchUser
+    | FetchUserFail
+    | FetchUserSuccess;
