@@ -65,6 +65,7 @@ const RoomEditor: React.FC = () => {
                 </Fade>
             </Modal>
     </div>
+
 };
 
 export default RoomEditor;

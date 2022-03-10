@@ -8,65 +8,62 @@ import { RootState } from "../../app/store";
 import DatePicker from "react-datepicker";
 
 const BookingEditor: React.FC = () => {
-    const dispatch = useDispatch();
+
+    const initialBookingState = {
+        id: 0,
+        date: new Date(),
+        startSlot: null,
+        endSlot: null,
+        room: {name:"", id:0},
+        user : {id:0,firstName:"", lastName:""}
+      };
 
     useEffect(() => {
-        dispatch({ type: "FETCH_USERS" });
-        dispatch({ type: "FETCH_ROOMS" });
+            dispatch({ type: "FETCH_USERS" });
+            dispatch({ type: "FETCH_ROOMS" });
          }, []);
         const users = useSelector((state: RootState) => state.user.users);
         const rooms = useSelector((state: RootState) => state.room.rooms);
-
-    const currentBooking = useSelector((state: RootState) => state.booking.booking);
-
-    const currentBookingId = _.isNil(currentBooking) ? 0 : currentBooking.id;
-    const currentBookingDate = _.isNil(currentBooking) ? new Date() : currentBooking.date;
-    const currentBookingStartSlot = _.isNil(currentBooking) ? "" : currentBooking.startSlot;
-    const currentBookingEndSlot = _.isNil(currentBooking) ? "" : currentBooking.endSlot;
-    const currentBookingUser = _.isNil(currentBooking) ? "" : currentBooking.user;
-    const currentBookingRoom = _.isNil(currentBooking) ? "" : currentBooking.room;
-
-    const [id, setId] = React.useState(currentBookingId);
-    const [startSlot, setStartSlot] = React.useState(currentBookingStartSlot);
-    const [endSlot, setEndSlot] = React.useState(currentBookingEndSlot);
-    const [date, setDate] = React.useState(currentBookingDate);
-    const [user, setUser] = React.useState(currentBookingUser);
-    const [room, setRoom] = React.useState(currentBookingRoom);
-
-    useEffect(() => {
-        setId(currentBookingId);
-        setDate(currentBookingDate);
-        setStartSlot(currentBookingStartSlot);
-        setEndSlot(currentBookingEndSlot);
-        setUser(currentBookingUser);
-        setRoom(currentBookingRoom);
-    }, [currentBooking]);
-
-    const saveBooking = () => {
-            dispatch({ type: "CREATE_BOOKING", payload: { date, startSlot, endSlot, user, room } });
+        const [startDate, setStartDate] = React.useState(new Date());
+        const [booking, setBooking] = React.useState(initialBookingState);
+        booking.date=startDate;
+        const dispatch = useDispatch();
+        const BookRoomEvent=()=>{
+            dispatch({booking: {date:booking.date, 
+                id:null, startSlot:booking.startSlot, 
+                endSlot:booking.endSlot, 
+                user:booking.user,
+                room:booking.room
+            }, type: "CREATE_BOOKING"});
+            setBooking({ ...initialBookingState});
             window.location.reload();
-        } 
-    
-    const handleDateChange = (date: any) => {
-        setDate(date);
-       }
+        }
+        const handleDateChange = (date: any) => {
+            booking.date=date;
+            setStartDate(date);
+           }
 
-    const handleSelectedUserChange=(event: { target: { name: any; value: any; }; }) => {
+        const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
+        const { name, value } = event.target;
+        setBooking({ ...booking, [name]: value });
+      };
+
+      const handleSelectedUserChange=(event: { target: { name: any; value: any; }; }) => {
         const { name, value } = event.target;
         const u=users.find(i=>i.id==event.target.value)
         if(u)
         {
-           setUser(u);
+            booking.user={id:u.id, firstName:u.firstName, lastName:u.lastName};
         }
         
       };
 
-    const handleSelectedRoomChange=(event: { target: { name: any; value: any; }; }) => {
+      const handleSelectedRoomChange=(event: { target: { name: any; value: any; }; }) => {
         const { name, value } = event.target;
         const r=rooms.find(i=>i.id==event.target.value)
         if(r)
         {
-           setRoom(r);
+            booking.room={id:r.id, name:r.name};
         }
         
       };
@@ -96,7 +93,7 @@ const BookingEditor: React.FC = () => {
                 <Fade in={true}>
                     <div className={classes.paper}>
                         <DatePicker 
-                            selected={currentBookingDate} 
+                            selected={startDate} 
                             onChange={handleDateChange} />
                         <br/>
                         <input
@@ -107,9 +104,9 @@ const BookingEditor: React.FC = () => {
                             placeholder="Start Slot"
                             id="startSlot"
                             required
-                            value={currentBookingStartSlot || ''}
+                            value={booking.startSlot || ''}
                             name="startSlot"
-                            onChange={(e) => setStartSlot(e.target.value)}/>
+                            onChange={handleInputChange}/>
                                 <br/>
                             <input
                             onKeyPress={(event) => {
@@ -120,9 +117,9 @@ const BookingEditor: React.FC = () => {
                         placeholder="End Slot"
                         id="endSlot"
                         required
-                        value={currentBookingEndSlot || ''}
+                        value={booking.endSlot || ''}
                         name="endSlot"
-                        onChange={(e) => setEndSlot(e.target.value)}
+                        onChange={handleInputChange}
                         />
                         <br/>
                         <select name="user" id="user" onChange={handleSelectedUserChange}>
@@ -141,7 +138,7 @@ const BookingEditor: React.FC = () => {
                         </select>
                         <br/>
                         <div>
-                            <button onClick={saveBooking}>Save</button>
+                            <button onClick={BookRoomEvent}>Save</button>
                         </div>
                     </div>
                 </Fade>

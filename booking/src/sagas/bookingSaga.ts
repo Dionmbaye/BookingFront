@@ -30,9 +30,9 @@ export function* fetchBooking(action: FetchBooking) {
     }
 }
 
-export function* createBooking(action: CreateBooking): any {
+export function* createBooking(booking:any): any {
     try {
-        yield call(postBooking, action.payload);
+        yield  call(postBooking(booking));
         yield put({
             type: "CREATE_BOOKING_SUCCESS"
         });

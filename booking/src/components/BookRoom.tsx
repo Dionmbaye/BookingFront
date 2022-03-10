@@ -34,7 +34,6 @@ const BookRoom: React.FC = () => {
                 user:booking.user,
                 room:booking.room
             }, type: "BOOK_ROOM"});
-            setSubmitted(true);
             setBooking({ ...initialBookingState});
         }
         const handleDateChange = (date: any) => {
