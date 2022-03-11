@@ -32,14 +32,16 @@ export const bookingReducer: Reducer<BookingState, BookingAction> = (
                     user: {id:0, firstName:"", lastName:""},
                     room: {id:0, name:""}
                 },
-                isLoading: true
+                isLoading: true,
+                isFreeSlotsOpen:false
             };
         case "FETCH_BOOKING_SUCCESS":
             return {
                 ...state,
                 booking: action.payload,
                 isOpen: true,
-                isLoading: false
+                isLoading: false,
+                isFreeSlotsOpen:false
             };
         case "OPEN_BOOKING_EDITOR":
             return {
@@ -52,19 +54,22 @@ export const bookingReducer: Reducer<BookingState, BookingAction> = (
                     user: {id:0, firstName:"", lastName:""},
                     room: {id:0, name:""}
                 },
-                isOpen: true
+                isOpen: true,
+                isFreeSlotsOpen:false
             };
         case "CREATE_BOOKING":
             return {
                 ...state,
                 booking: action.payload,
-                isLoading: true
+                isLoading: true,
+                isFreeSlotsOpen:false
             };
         case "CREATE_BOOKING_SUCCESS":
             return {
                 ...state,
                 isOpen: false,
-                isLoading: false
+                isLoading: false,
+                isFreeSlotsOpen:false
             };
         case "CREATE_BOOKING_CONFLICT":
             return {

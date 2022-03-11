@@ -24,6 +24,9 @@ const Slots : React.FC = () => {
         { title: "End", field: "end" }
     ];
 
+    const closeStyle = {
+        left: '90%',
+    };
 
     const popupStyle = makeStyles(theme => ({
         modal: {
@@ -50,7 +53,7 @@ const Slots : React.FC = () => {
                 }}>
                 <Fade in={true}>
                     <div className={classes.paper}>
-                            <IconButton onClick={onClose}>
+                            <IconButton style={closeStyle} onClick={onClose}>
                                 <CloseIcon />
                             </IconButton>
                             <MaterialTable title="Free Slots" columns={columns} data={slots} 

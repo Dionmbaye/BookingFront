@@ -33,7 +33,7 @@ export function* fetchBooking(action: FetchBooking) {
 export function* createBooking(action: CreateBooking): any {
     try {
         const freeSlots= yield  call(postBooking, action.payload);
-        if(freeSlots)
+        if(freeSlots.length>0)
         {
             yield put({
                 type: "CREATE_BOOKING_CONFLICT",
