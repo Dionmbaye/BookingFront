@@ -1,4 +1,5 @@
 import { Booking } from "../domain/Booking";
+import { Slot } from "../domain/Slot";
 
 type FetchBookings = {
     type: "FETCH_BOOKINGS";
@@ -26,6 +27,10 @@ type CreateBookingSuccess = {
     payload: Booking;
 };
 
+type CreateBookingConclict = {
+    type: "CREATE_BOOKING_CONFLICT";
+    payload: Slot[];
+};
 type CreateBookingFail = {
     type: "CREATE_BOOKING_FAIL";
 };
@@ -56,4 +61,5 @@ export type BookingAction =
     | OpenBookingEditor
     | FetchBooking
     | FetchBookingFail
-    | FetchBookingSuccess;
+    | FetchBookingSuccess
+    | CreateBookingConclict;

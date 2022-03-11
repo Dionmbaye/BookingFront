@@ -1,5 +1,6 @@
 import client from "../api";
 import { Booking } from "../domain/Booking";
+import { Slot } from "../domain/Slot";
 
 export const fetchBookings = async (): Promise<Booking[]> => {
     const response = await client.get("/Bookings");
@@ -7,14 +8,25 @@ export const fetchBookings = async (): Promise<Booking[]> => {
 };
 
 
-export const postBooking = (booking: any)=>async ()=>{
-    
-    const response = await client.post("/Bookings", {id:0, date:booking.booking.date, 
-        startSlot:booking.booking.startSlot,
-        endSlot: booking.booking.endSlot,
-        user: booking.booking.user,
-        room:booking.booking.room});
-    return response;
+export const postBooking = async (booking: any): Promise<Slot[]>=>{
+    try
+    {
+    const response = await client.post("/Bookings", {id:0, date:booking.date, 
+        startSlot:booking.startSlot,
+        endSlot: booking.endSlot,
+        user: booking.user,
+        room:booking.room});
+        return [];
+    }
+    catch (ex: any)
+    {
+        if(ex.message.includes("409"))
+        {
+            return ex.response.data.slots;
+        }
+        return [];
+    }
+
 };
 
 export const getBooking = async (id: number): Promise<Booking> => {

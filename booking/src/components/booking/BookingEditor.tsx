@@ -29,14 +29,14 @@ const BookingEditor: React.FC = () => {
         booking.date=startDate;
         const dispatch = useDispatch();
         const BookRoomEvent=()=>{
-            dispatch({booking: {date:booking.date, 
+            dispatch({payload: {date:booking.date, 
                 id:null, startSlot:booking.startSlot, 
                 endSlot:booking.endSlot, 
                 user:booking.user,
                 room:booking.room
             }, type: "CREATE_BOOKING"});
             setBooking({ ...initialBookingState});
-            window.location.reload();
+            //window.location.reload();
         }
         const handleDateChange = (date: any) => {
             booking.date=date;

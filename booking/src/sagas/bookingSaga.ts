@@ -30,12 +30,23 @@ export function* fetchBooking(action: FetchBooking) {
     }
 }
 
-export function* createBooking(booking:any): any {
+export function* createBooking(action: CreateBooking): any {
     try {
-        yield  call(postBooking(booking));
-        yield put({
-            type: "CREATE_BOOKING_SUCCESS"
-        });
+        const freeSlots= yield  call(postBooking, action.payload);
+        if(freeSlots)
+        {
+            yield put({
+                type: "CREATE_BOOKING_CONFLICT",
+                payload:freeSlots
+            });
+        }
+        else{
+            yield put({
+                type: "CREATE_BOOKING_SUCCESS",
+                payload:[]
+            });
+        }
+        
     } catch (e) {
         yield put({
             type: "CREATE_BOOKING_FAIL"

@@ -5,8 +5,10 @@ import BookingState from "../states/BookingState";
 const initialState: BookingState = {
     bookings: [],
     booking: undefined,
+    freeSlots:[],
     isOpen: false,
-    isLoading: false
+    isLoading: false,
+    isFreeSlotsOpen: false
 };
 
 export const bookingReducer: Reducer<BookingState, BookingAction> = (
@@ -63,6 +65,14 @@ export const bookingReducer: Reducer<BookingState, BookingAction> = (
                 ...state,
                 isOpen: false,
                 isLoading: false
+            };
+        case "CREATE_BOOKING_CONFLICT":
+            return {
+                ...state,
+                freeSlots: action.payload,
+                isOpen: false,
+                isLoading: false,
+                isFreeSlotsOpen:true
             };
         default:
             return state;

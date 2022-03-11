@@ -11,6 +11,7 @@ import TypoGraphy from '@material-ui/core/Typography';
 import NavBar from "./navbar";
 import User from "./components/User/User";
 import Booking from "./components/booking/Booking";
+import FreeSlot from "./components/freeSlot/FreeSlot";
 
 function App() {
   return (
