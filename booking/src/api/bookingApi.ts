@@ -20,7 +20,7 @@ export const postBooking = async (booking: any): Promise<Slot[]>=>{
     }
     catch (ex: any)
     {
-        if(ex.message.includes("409"))
+        if(ex.response.status==409)
         {
             return ex.response.data.slots;
         }
